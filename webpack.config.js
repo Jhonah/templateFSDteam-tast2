@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // Main const
 const PATHS = {
     src: path.join(__dirname, 'src'),
-    dist: path.resolve(__dirname, 'dist'),
+    dist: path.join(__dirname, 'dist'),
     assets: 'assets/'
 }
 
@@ -20,7 +20,7 @@ module.exports = {
     output: {
         path: PATHS.dist,
         filename: `${PATHS.assets}js/[name].[hash].js`,
-        publicPath: '/'
+        publicPath: './'
     },
     module: {
         rules: [
