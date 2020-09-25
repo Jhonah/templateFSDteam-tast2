@@ -2,8 +2,6 @@
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-//const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -57,7 +55,5 @@ module.exports = {
             template: `${PAGES_DIR}/${page}`,   
             filename: `./${page.replace(/\.pug/, '.html')}`
             })),
-        //new HtmlWebpackPugPlugin(),
-        //new WebpackMd5Hash()
     ]
 };
