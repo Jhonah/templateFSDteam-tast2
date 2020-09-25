@@ -1,19 +1,22 @@
 // webpack 4
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+//const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+//const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// Main const
+// Main const 
 const PATHS = {
     src: path.join(__dirname, 'src'),
-    dist: path.join(__dirname, 'dist'),
+    dist: path.resolve(__dirname, 'dist'),
     assets: 'assets/'
 }
 
 // Pages const for HtlmWebpackPlugin
 const PAGES_DIR = `${PATHS.src}/pug/pages/`
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
     entry: { main: './src/index.js' },
@@ -44,14 +47,17 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: `${PATHS.assets}css/[name].[contenthash].css`,
+            filename: `${PATHS.assets}css/[name].[hash].css`,
         }),
-        new HtmlWebpackPlugin({
-            inject: false,
+        ...PAGES.map(page =>
+            new HtmlWebpackPlugin({
+            //inject: false, - ??? ? ????? ?????? ????? ????????? ?? ????????? ??????????? ?????? ? ????????, ?? ?? ??????? ? ???????? 3 ???, ????? ??? ??????
             hash: true,
-            template: './src/index.html',
-            filename: 'index.html',
-        }),
-        new WebpackMd5Hash()
+
+            template: `${PAGES_DIR}/${page}`,   
+            filename: `./${page.replace(/\.pug/, '.html')}`
+            })),
+        //new HtmlWebpackPugPlugin(),
+        //new WebpackMd5Hash()
     ]
 };
