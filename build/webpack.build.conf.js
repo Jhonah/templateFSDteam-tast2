@@ -1,59 +1,15 @@
-// webpack 4
-const path = require('path');
-const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
 
-// Main const 
-const PATHS = {
-    src: path.join(__dirname, 'src'),
-    dist: path.resolve(__dirname, 'dist'),
-    assets: 'assets/'
-}
-
-// Pages const for HtlmWebpackPlugin
-const PAGES_DIR = `${PATHS.src}/pug/pages/`
-const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
-
-module.exports = {
-    entry: { main: './src/index.js' },
+const buildWebpackConfig = merge(baseWebpackConfig, {
+    // BUILD config
+    mode: 'production',
     output: {
-        path: PATHS.dist,
-        filename: `${PATHS.assets}js/[name].[hash].js`,
         publicPath: './'
     },
-    module: {
-        rules: [
-            {
-                test: /\.pug$/,
-                use: ['pug-loader']
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
-            },
-            {
-                test: /\.scss$/,
-                use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader' ]
-            }
-        ]
-    },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: `${PATHS.assets}css/[name].[hash].css`,
-        }),
-        ...PAGES.map(page =>
-            new HtmlWebpackPlugin({
-            //inject: false, - ??? ? ????? ?????? ????? ????????? ?? ????????? ??????????? ?????? ? ????????, ?? ?? ??????? ? ???????? 3 ???, ????? ??? ??????
-            hash: true,
+    plugins: [],
+})
 
-            template: `${PAGES_DIR}/${page}`,   
-            filename: `./${page.replace(/\.pug/, '.html')}`
-            })),
-    ]
-};
+module.exports = new Promise((resolve, reject) => {
+    resolve(buildWebpackConfig)
+})
