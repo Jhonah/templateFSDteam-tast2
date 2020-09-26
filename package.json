@@ -4,7 +4,7 @@
   "description": "description for templateFSDteam-task2",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "webpack-md5-hash": "0.0.6"
   }
 }

@@ -2,14 +2,10 @@ extends ../layout/main
 
 block variables
 
-block head
-  //- link(rel="stylesheet",    href="<%=htmlWebpackPlugin.files.css %>")
-  
 block content
   section
     .container
-      .item= "test text"
+      .item= "test webpack-dev"
 
 block script
-  //- script(src="<%= htmlWebpackPlugin.files.chunks.main.entry %>")
   script(type='text/javascript').
