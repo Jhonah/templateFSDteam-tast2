@@ -7,8 +7,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // Main const 
 const PATHS = {
-    src: path.join(__dirname, 'src'),
-    dist: path.resolve(__dirname, 'dist'),
+    src: path.join(__dirname, '../src'),
+    dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 }
 
@@ -17,10 +17,17 @@ const PAGES_DIR = `${PATHS.src}/pug/pages/`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
-    entry: { main: './src/index.js' },
+    // BASE config
+    externals: {
+        paths: PATHS
+    },
+    entry: {
+        app: PATHS.src,
+        //main: './src/index.js' 
+    },
     output: {
-        path: PATHS.dist,
         filename: `${PATHS.assets}js/[name].[hash].js`,
+        path: PATHS.dist,
         publicPath: './'
     },
     module: {
@@ -49,9 +56,7 @@ module.exports = {
         }),
         ...PAGES.map(page =>
             new HtmlWebpackPlugin({
-            //inject: false, - ??? ? ????? ?????? ????? ????????? ?? ????????? ??????????? ?????? ? ????????, ?? ?? ??????? ? ???????? 3 ???, ????? ??? ??????
             hash: true,
-
             template: `${PAGES_DIR}/${page}`,   
             filename: `./${page.replace(/\.pug/, '.html')}`
             })),

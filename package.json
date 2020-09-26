@@ -1,11 +1,11 @@
 {
   "name": "templatefsdteam-task2",
   "version": "1.0.0",
-  "description": "description for templateFSDteam-task2",
+  "description": "выполняю второе задание по практике верстки for templateFSDteam-task2",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
+    "build": "webpack --config ./build/webpack.build.conf.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^3.2.0",
-    "html-webpack-pug-plugin": "^2.0.0",
     "mini-css-extract-plugin": "^0.11.2",
     "node-sass": "^4.14.1",
     "postcss": "^8.0.9",
@@ -37,6 +36,6 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-merge": "^5.1.4"
   }
 }
