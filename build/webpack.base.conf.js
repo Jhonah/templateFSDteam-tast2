@@ -50,7 +50,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    //outputPath: 'fonts/'
+                    outputPath: 'fonts/'
                 }
             }, {
                 test: /\.scss$/,
@@ -114,14 +114,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/[name].[hash].css`,
         }),
-        new CopyWebpackPlugin({
+        /*new CopyWebpackPlugin({
             patterns: [
                 {
                     from: `${PATHS.src}/assets/fonts`,
                     to: `${PATHS.assets}fonts`
                 },
             ]
-        }),
+        }),*/
         ...PAGES.map(page =>
             new HtmlWebpackPlugin({
             hash: true,
