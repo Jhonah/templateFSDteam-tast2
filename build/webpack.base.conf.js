@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// Main const 
+// Main const  
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
@@ -14,6 +14,7 @@ const PATHS = {
 
 // Pages const for HtlmWebpackPlugin
 const PAGES_DIR = `${PATHS.src}/pug/pages/`
+//const PAGES_CSS = `${PATHS.assets}fonts/Quicksand/`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
@@ -44,9 +45,51 @@ module.exports = {
                 }
             },
             {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
+                }
+            }, /*{
                 test: /\.scss$/,
-                use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader' ]
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    }, {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: true, config: require('autoprefixer') }
+                    }, {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
+                    }
+                ]
+            }*/
+            {
+                test: /\.scss$/,
+                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
             }
+            /*{
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    }, {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: true, config: require('autoprefixer') }
+                    }
+                ]
+            }*/
         ]
     },
     plugins: [
