@@ -1,5 +1,6 @@
 @import 'utils/vars';
 @import 'utils/fonts';
+//@import 'utils/style';
 
 html {
     line-height: 0.05em;
@@ -10,7 +11,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    //font-family: $mainFont;
+    font-family: $mainFont;
     //font-size: ;
     //font-weight: ;
 }
@@ -26,6 +27,6 @@ section, .section {
     height: 30px;
 }
 .item2 {
-    //font-family: 'Quicksand';
+    font-family: 'Quicksand';
     height: 30px;
 }

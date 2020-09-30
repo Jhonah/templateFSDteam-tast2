@@ -4,6 +4,7 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Main const  
 const PATHS = {
@@ -49,9 +50,9 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'fonts/'
+                    //outputPath: 'fonts/'
                 }
-            }, /*{
+            }, {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
@@ -61,22 +62,26 @@ module.exports = {
                         options: { sourceMap: true }
                     }, {
                         loader: 'postcss-loader',
-                        options: { sourceMap: true, config: require('autoprefixer') }
+                        options: {
+                            sourceMap: true,
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        'autoprefixer',
+                                        {
+                                            // Options
+                                        },
+                                    ],
+                                ],
+                            },
+                        },
                     }, {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
                     }
                 ]
-            }*/
-            {
-                test: /\.scss$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-            }
-            /*{
                 test: /\.css$/,
                 use: [
                     'style-loader',
@@ -86,16 +91,36 @@ module.exports = {
                         options: { sourceMap: true }
                     }, {
                         loader: 'postcss-loader',
-                        options: { sourceMap: true, config: require('autoprefixer') }
-                    }
-                ]
-            }*/
-        ]
+                        options: {
+                            sourceMap: true,
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        'autoprefixer',
+                                        {
+                                            // Options
+                                        },
+                                    ],
+                                ],
+                            },
+                        },
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/[name].[hash].css`,
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: `${PATHS.src}/assets/fonts`,
+                    to: `${PATHS.assets}fonts`
+                },
+            ]
         }),
         ...PAGES.map(page =>
             new HtmlWebpackPlugin({

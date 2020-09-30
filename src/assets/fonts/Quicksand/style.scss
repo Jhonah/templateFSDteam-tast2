@@ -1,13 +1,13 @@
 /* font converted using font-converter.net. thank you! */
 @font-face {
-  font-family: "Quicksand";
-  src: url("./fonts/Quicksand-VariableFontwght.eot"); /* IE9 Compat Modes */
-  src: url("./fonts/Quicksand-VariableFontwght.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("./fonts/Quicksand-VariableFontwght.otf") format("opentype"), /* Open Type Font */
-    url("./fonts/Quicksand-VariableFontwght.svg") format("svg"), /* Legacy iOS */
-    url("./fonts/Quicksand-VariableFontwght.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("./fonts/Quicksand-VariableFontwght.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/Quicksand-VariableFontwght.woff2") format("woff2"); /* Modern Browsers */
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Quicksand";
+    src: url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.eot"); /* IE9 Compat Modes */
+    src: url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    //url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/Quicksand/fonts/Quicksand-VariableFontwght.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
 }
