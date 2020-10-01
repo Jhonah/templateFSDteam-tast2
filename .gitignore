@@ -3,3 +3,7 @@ node_modules
 
 # Folder
 dist/
+for_perfect_pixel/
+
+// files
+.DS_Store
