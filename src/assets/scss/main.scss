@@ -1,32 +1,105 @@
+//@import 'utils/libs';
 @import 'utils/vars';
+//@import 'utils/mixins';
 @import 'utils/fonts';
-//@import 'utils/style';
+//@import 'utils/reset';
 
 html {
-    line-height: 0.05em;
-    font-size: 14px;
-    color: #101010;
-    height: 100%;   
+    line-height: $mainLineHeight;
+    font-size: $mainFontSize;
+    color: $mainFontColor;
+    height: 100%;
+
+    @media screen and (max-width: $macAirDesktop) {
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: $desktopWidth) {
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: $tableWidth) {
+        font-size: 14px;
+    }
+
+    @media screen and (max-width: $phoneWidth) {
+        font-size: 13px;
+    }
 }
 body {
     margin: 0;
     padding: 0;
     font-family: $mainFont;
-    //font-size: ;
-    //font-weight: ;
+      font-size: $mainFontSize;
+      font-weight: $mainFontWeight;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+*, *:before, *:after { box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+a { text-decoration: none; }
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
 section, .section {
+    position: relative;
     padding: 40px 0;
+
+    @media screen and (max-width: $desktopWidth) {
+        padding: 36px 0;
+    }
+
+    @media screen and (max-width: $desktopWidth) {
+        padding: 28px 0;
+    }
+
+    @media screen and (max-width: $desktopWidth) {
+        padding: 20px 0;
+    }
 }
+
+.wrapper {
+
+}
+
+.content-wrapper {
+
+}
+
 .container {
     width: 100%;
+    flex: 0 0 auto;
+    position: relative;
     margin: 0 auto;
     max-width: 980px;
+
+    @media screen and (max-width: $macAirDesktop) {
+
+    }
+
+    @media screen and (max-width: $desktopWidth) {
+
+    }
+
+    @media screen and (max-width: $smDesktopWidth) {
+
+    }
+
+    @media screen and (max-width: $tableWidth) {
+
+    }
+
+    @media screen and (max-width: $phoneWidth) {
+
+    }
 }
-.item {
-    height: 30px;
-}
-.item2 {
-    font-family: 'Quicksand';
-    height: 30px;
-}
+
+// Modules
+@import "modules/header.scss";

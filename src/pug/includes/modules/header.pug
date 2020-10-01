@@ -1,3 +1,22 @@
 header
   .container
-    span header
+    nav.nav
+      .nav-wrapper
+          ul.nav__list
+            li.nav__item.nav__item--current
+              a(href="./index.html").nav__link= 'главная'
+            li.nav__item
+              a(href="./tassel.html").nav__link= 'купить кисточки'
+            li.nav__item
+              a(href="./tassel.html").nav__link= 'купить холсты'
+            li.nav__item
+              a(href="./tassel.html").nav__link= 'купить картины по номерам'
+            li.nav__item
+              a(href="./tassel.html").nav__link= 'о нас'
+            //- li.nav__item
+              //- ul.nav__list more
+                //- li.nav__item контакты
+                //- li.nav__item ЧаВо
+                //- li.nav__item блог
+            li.nav__item
+              img.nav__img(alt="корзина") 

@@ -1,4 +1,4 @@
-// webpack 4
+/* webpack 4 */
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -6,16 +6,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// Main const  
+/* Main const */
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 }
 
-// Pages const for HtlmWebpackPlugin
+/* Pages const for HtlmWebpackPlugin */
 const PAGES_DIR = `${PATHS.src}/pug/pages/`
-//const PAGES_CSS = `${PATHS.assets}fonts/Quicksand/`
+/* const PAGES_CSS = `${PATHS.assets}fonts/Quicksand/` */
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
